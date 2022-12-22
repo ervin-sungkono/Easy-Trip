@@ -20,3 +20,13 @@
         <a href="#" class="btn w-100" style="background-color: #FF9F1C; color: white;">Lihat Detail</a>
     </div>
 </div>
+
+{{-- @include('components.product-card', array(
+    'id' => 1,
+    'name' => 'Hutan Pinus Pengger',
+    'location' => 'Yogyakarta',
+    'rating' => 4.8,
+    'price' => 5000,
+    'imageUrl' => 'images/desert.jpg',
+    'status' => true,
+)) --}}
