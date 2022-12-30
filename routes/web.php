@@ -7,6 +7,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 
 Route::prefix('admin')->middleware('isAdmin')->group(function () {
 // Admin Routes
@@ -23,6 +24,9 @@ Route::prefix('admin')->middleware('isAdmin')->group(function () {
 Route::middleware('auth')->group(function () {
 // Member Routes
 // GET
+    Route::get('/home', [ItemController::class, 'index'])->name('home');
+    Route::get('/product/{id}', [ItemController::class, 'viewDetail'])->name('product.detail');
+    Route::get('/search', [ItemController::class, 'search'])->name('search');
 
 // POST
 
@@ -32,6 +36,6 @@ Route::middleware('auth')->group(function () {
 
 });
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::get('/', [HomeController::class, 'index'])->name('home');
