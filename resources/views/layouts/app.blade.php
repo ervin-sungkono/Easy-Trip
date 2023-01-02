@@ -15,15 +15,12 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
         .navbar{
-            width: 100%;
-            position: fixed;
-            top: 0;
-            z-index: 999;
             transition: 0.5s top ease-in-out;
         }
 
@@ -35,11 +32,15 @@
         .btn-outline-secondary:hover{
             color: white !important;
         }
+
+        .playfair{
+            font-family: 'Playfair Display', serif;!important
+        }
     </style>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" id="navbar">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top" id="navbar">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{asset('images/web-logo.png')}}" alt="Nav Logo">
@@ -102,7 +103,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4" @yield('background')>
             @yield('content')
         </main>
 

@@ -4,7 +4,7 @@
     <div class="container min-vh-100 d-flex align-items-center">
         <div class="row row-cols-1 row-cols-sm-2">
             <div class="col col-md-7">
-                <h1 class="display-3 fw-bold mb-3">Melayani <span class="text-primary">kebutuhan perjalanan</span> anda.</h1>
+                <h1 class="display-3 playfair fw-bold mb-3">Melayani <span class="text-primary">kebutuhan perjalanan</span> anda.</h1>
                 <p class="fs-5 mb-4">Lebih dari 500 pilihan destinasi di seluruh Indonesia.</p>
                 <div class="row row-cols-1 row-cols-md-2 px-3 gap-3">
                     <a href="#pesantiket" class="col col-md-5 btn btn-secondary btn-lg fw-semibold text-light">

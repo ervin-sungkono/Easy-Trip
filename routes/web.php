@@ -22,11 +22,8 @@ Route::prefix('admin')->middleware('isAdmin')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-// Member Routes
+// Authenticated User Routes
 // GET
-    Route::get('/home', [ItemController::class, 'index'])->name('home');
-    Route::get('/product/{id}', [ItemController::class, 'viewDetail'])->name('product.detail');
-    Route::get('/search', [ItemController::class, 'search'])->name('search');
 
 // POST
 
@@ -36,6 +33,13 @@ Route::middleware('auth')->group(function () {
 
 });
 
-// Auth::routes();
+Auth::routes();
 
-// Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/product', [ItemController::class, 'index'])->name('product.index');
+Route::get('/product/{id}', [ItemController::class, 'viewDetail'])->name('product.detail');
+Route::get('/search', [ItemController::class, 'search'])->name('search');
+
+Route::get('/login/{provider}', [SocialAccountController::class, 'redirectProvider']);
+Route::get('/{provider}/callback', [SocialAccountController::class, 'providerCallback']);

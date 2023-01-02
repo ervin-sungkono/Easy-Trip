@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Transaction extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['user_id'];
+
+    public function details(){
+        return $this->hasMany(TransactionDetail::class);
+    }
 }

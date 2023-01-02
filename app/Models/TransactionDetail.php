@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class TransactionDetail extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['trans_id', 'item_id', 'quantity'];
+
+    protected $appends = ['total_price'];
+
+    public function item(){
+        return $this->hasOne(Item::class, 'id', 'item_id')->withTrashed();
+    }
+
+    public function getTotalPriceAttribute(){
+        return $this->item->price * $this->quantity;
+    }
 }
