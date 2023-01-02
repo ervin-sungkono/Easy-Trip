@@ -9,19 +9,14 @@ use Illuminate\Support\Facades\Storage;
 
 class ItemController extends Controller
 {
-    public function index(){
-        $items = Item::paginate(8);
-        return view('home', compact('items'));
+    public function index(Request $request){
+        $query = $request->query('q');
+        $items = Item::where('name', 'LIKE', "%{$query}%")->paginate(20);
+        return view('item.index', compact('items', 'query'));
     }
 
     public function showForm(){
         return view('item.create');
-    }
-
-    public function search(Request $request){
-        $text = $request->q;
-        $items = Item::where('name','LIKE',"%{$text}%")->paginate(8);
-        return view('search', compact('items'))->with('q', $request->q);
     }
 
     public function viewDetail($id){

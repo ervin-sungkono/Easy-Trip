@@ -32,6 +32,7 @@ class Item extends Model
     }
 
     public function getAvgRatingAttribute(){
+        if($this->testimonies->count() === 0) return 0;
         return $this->testimonies()->avg('rating');
     }
 }

@@ -41,5 +41,5 @@ Route::get('/product', [ItemController::class, 'index'])->name('product.index');
 Route::get('/product/{id}', [ItemController::class, 'viewDetail'])->name('product.detail');
 Route::get('/search', [ItemController::class, 'search'])->name('search');
 
-Route::get('/login/{provider}', [SocialAccountController::class, 'redirectProvider']);
+Route::get('/login/{provider}', [SocialAccountController::class, 'redirectProvider'])->name('provider.login');
 Route::get('/{provider}/callback', [SocialAccountController::class, 'providerCallback']);

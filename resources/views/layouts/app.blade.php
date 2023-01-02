@@ -40,7 +40,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top" id="navbar">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm sticky-top" id="navbar">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{asset('images/web-logo.png')}}" alt="Nav Logo">
@@ -56,7 +56,7 @@
                             <a href="{{route('home')}}" class="nav-link active">{{__('Beranda')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">{{__('Pesan Tiket')}}</a>
+                            <a href="{{route('product.index')}}" class="nav-link">{{__('Pesan Tiket')}}</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">{{__('Cek Order')}}</a>
@@ -67,7 +67,7 @@
                         <!-- Authentication Links -->
                         <div class="ms-3">
                             @guest
-                                @if (Route::currentRouteName() == 'register' || Route::currentRouteName() == 'home')
+                                @if (Route::currentRouteName() != 'login')
                                     <li class="nav-item">
                                         <a class="btn btn-secondary fw-semibold text-light" href="{{ route('login') }}">{{ __('Masuk') }}</a>
                                     </li>

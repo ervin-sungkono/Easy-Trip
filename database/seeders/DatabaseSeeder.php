@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Item;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,5 +23,7 @@ class DatabaseSeeder extends Seeder
         User::factory(1)->create([
             'email' => 'member@example.com',
         ]);
+
+        Item::factory(100)->create();
     }
 }

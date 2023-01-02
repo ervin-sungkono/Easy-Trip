@@ -1,8 +1,14 @@
 @extends('layouts.app')
 
+@section('title', 'Easytrip | Daftar')
+
+@section('background')
+    style="background-image: url({{asset('images/background-img.png')}})""
+@endsection
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
+<div class="container min-vh-100 d-flex align-items-center">
+    <div class="row justify-content-center w-100">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>

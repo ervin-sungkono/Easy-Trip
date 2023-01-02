@@ -1,7 +1,11 @@
-<div class="card shadow bg-white" style="width: 16rem;">
-    <img src="{{asset('storage/'.$imageUrl)}}" class="card-img-top" alt="..." style="aspect-ratio: 16 / 10; object-fit: cover">
-    <div class="card-body">
-        <h5 class="card-title fw-bold">{{$name}}</h5>
+<div class="card shadow bg-white h-100" style="max-width: 18rem">
+    @if(file_exists(public_path().'\storage/'.$imageUrl))
+        <img src="{{asset('storage/'.$imageUrl)}}" class="card-img-top" alt="{{$name}}">
+    @else
+        <img src="{{$imageUrl}}" class="card-img-top" alt="{{$name}}">
+    @endif
+    <div class="card-body d-flex flex-column">
+        <h5 class="card-title fw-bold flex-grow-1">{{$name}}</h5>
         <div class="d-flex justify-content-between">
             <div class="d-flex gap-2">
                 <i class="bi bi-geo-alt-fill"></i>
@@ -9,7 +13,7 @@
             </div>
             <div class="d-flex gap-2">
                 <i class="bi bi-star-fill text-warning"></i>
-                <p>{{$rating}}/5.00</p>
+                <p>{{$rating > 0 ? number_format($rating,2)."/5.00" : "No Ratings"}}</p>
             </div>
         </div>
 
@@ -17,16 +21,6 @@
             <p class="fs-5 fw-bold">IDR {{number_format($price, 0, ',', '.')}}</p>
             <p class="{{$status ? 'text-success' : 'text-danger'}}">{{$status ? 'Tiket Tersedia' : 'Tiket Habis'}}</p>
         </div>
-        <a href="#" class="btn w-100" style="background-color: #FF9F1C; color: white;">Lihat Detail</a>
+        <a href="{{route('product.detail', ['id' => $id])}}" class="btn btn-primary text-white fw-bold w-100">Lihat Detail</a>
     </div>
 </div>
-
-{{-- @include('components.product-card', array(
-    'id' => 1,
-    'name' => 'Hutan Pinus Pengger',
-    'location' => 'Yogyakarta',
-    'rating' => 4.8,
-    'price' => 5000,
-    'imageUrl' => 'images/desert.jpg',
-    'status' => true,
-)) --}}

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Easytrip | Masuk')
+
 @section('background')
     style="background-image: url({{asset('images/background-img.png')}})""
 @endsection
