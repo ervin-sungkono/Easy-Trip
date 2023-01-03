@@ -28,7 +28,7 @@ class CartController extends Controller
         return redirect()->route('product.detail', ['id' => $request->item_id])->with('status', $status);
     }
 
-    public function showCart(){
+    public function index(){
         $carts = Auth::user()->cart->details;
         return view('cart.index', compact('carts'));
     }

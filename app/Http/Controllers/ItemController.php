@@ -33,7 +33,9 @@ class ItemController extends Controller
 
         $file = $request->file('image');
         $name = $file->getClientOriginalName();
-        $filename = now()->timestamp.'_'.$name;
+        $filename = str_replace(" ", "", $name).'_'.now()->timestamp;
+
+        $checked = $request->has('active') ? true : false;
 
         $imageUrl = Storage::disk('public')->putFileAs('images', $file, $filename);
         $item = Item::create([
@@ -41,10 +43,10 @@ class ItemController extends Controller
             'description' => $validated['description'],
             'image' => $imageUrl,
             'location' => $validated['location'],
-            'status' => $validated['status'],
+            'status' => $checked,
             'price' => $validated['price']
         ]);
-        return redirect()->route('item.create')->with('status', $item ? 'Item added successfully!' : 'Fail to add item!');
+        return redirect()->route('product.create')->with('status', $item ? 'Produk berhasil ditambahkan!' : 'Gagal menambahkan produk');
     }
 
     public function delete($id){

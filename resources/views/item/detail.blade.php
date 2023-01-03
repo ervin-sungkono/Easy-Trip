@@ -4,14 +4,18 @@
 
 @section('content')
     <div class="container">
-        <div class="row row-cols-1 row-cols-md-2 justify-content-center mb-4">
+        <div class="row row-cols-1 row-cols-md-2 justify-content-center align-items-start mb-4">
             <div class="col-md-6 mb-3">
-                <img src={{$item->image}} alt="" class="img-fluid rounded shadow-sm">
+                @if(file_exists(public_path().'\storage/'.$item->image))
+                    <img src={{asset('storage/'.$item->image)}} alt="" class="w-100 rounded shadow-sm" style="aspect-ratio: 16 / 10; object-fit: cover;">
+                @else
+                    <img src={{$item->image}} alt="" class="w-100 rounded shadow-sm" style="aspect-ratio: 16 / 10; object-fit: cover;">
+                @endif
             </div>
             <div class="col-md-6">
                 <div class="d-flex flex-column mb-4">
                     <div class="display-6 playfair fw-bold mb-3">{{$item->name}}</div>
-                    <p class="text-muted">{{$item->description}}</p>
+                    <p class="text-muted">{!! $item->description !!}</p>
                     <div class="card py-2">
                         <div class="card-body d-flex justify-content-center gap-3">
                             <div class="d-flex gap-2">

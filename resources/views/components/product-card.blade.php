@@ -1,8 +1,8 @@
-<div class="card shadow bg-white h-100 d-flex-sm" style="max-width: 18rem; min-width: 16rem;">
+<div class="card shadow bg-white mb-3" style="width: 18rem;">
     @if(file_exists(public_path().'\storage/'.$imageUrl))
-        <img src="{{asset('storage/'.$imageUrl)}}" class="card-img-top" alt="{{$name}}">
+        <img src="{{asset('storage/'.$imageUrl)}}" class="card-img-top" alt="{{$name}}" style="aspect-ratio: 16 / 10; object-fit: cover">
     @else
-        <img src="{{$imageUrl}}" class="card-img-top" alt="{{$name}}">
+        <img src="{{$imageUrl}}" class="card-img-top" alt="{{$name}}" style="aspect-ratio: 16 / 10; object-fit: cover">
     @endif
     <div class="card-body d-flex flex-column">
         <h5 class="card-title fw-bold flex-grow-1">{{$name}}</h5>

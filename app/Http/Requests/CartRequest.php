@@ -24,8 +24,8 @@ class CartRequest extends FormRequest
     public function rules()
     {
         return [
-            'quantity' => 'bail | required | gt:0',
-            'ticket_date' => 'bail | required | date | after_or_equal:'.date('Y-m-d'),
+            'quantity' => 'bail|required|gt:0',
+            'ticket_date' => 'bail|required|date|after_or_equal:'.date('Y-m-d'),
         ];
     }
 }

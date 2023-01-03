@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<div class="container min-vh-100 d-flex align-items-center">
+<div class="container d-flex align-items-center" style="min-height: 85vh;">
     <div class="row justify-content-center w-100">
         <div class="col-md-8">
             <div class="card">

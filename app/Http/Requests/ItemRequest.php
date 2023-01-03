@@ -24,13 +24,11 @@ class ItemRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'bail | required | string | between:5,30',
-            'image' => 'required',
-            'image.*' => 'file | mimes:jpg,png,jpeg',
-            'price' => 'bail | required | integer | gte:1000',
-            'description' => 'bail | required | string | min:5',
-            'location' => 'bail | required | string',
-            'status' => 'bail | required | boolean'
+            'name' => 'bail|required|string|unique:items|between:5,30',
+            'image' => 'required|file|mimes:jpg,png,jpeg',
+            'price' => 'bail|required|integer|gte:1000',
+            'description' => 'bail|required|string',
+            'location' => 'bail|required|string',
         ];
     }
 }

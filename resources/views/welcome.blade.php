@@ -7,12 +7,19 @@
                 <h1 class="display-3 playfair fw-bold mb-3">Melayani <span class="text-primary">kebutuhan perjalanan</span> anda.</h1>
                 <p class="fs-5 mb-4">Lebih dari 500 pilihan destinasi di seluruh Indonesia.</p>
                 <div class="row row-cols-1 row-cols-md-2 px-3 gap-3">
-                    <a href="#pesantiket" class="col col-md-4 btn btn-secondary btn-lg fw-semibold text-light">
+                    <a href="{{route('product.index')}}" class="col col-md-4 btn btn-secondary btn-lg fw-semibold text-light">
                         {{__('Pesan Tiket')}}
                     </a>
-                    <a href="{{route('register')}}" class="col col-md-4 btn btn-outline-secondary btn-lg fw-semibold">
-                        {{__('Daftar Akun')}}
-                    </a>
+                    @guest
+                        <a href="{{route('register')}}" class="col col-md-4 btn btn-outline-secondary btn-lg fw-semibold">
+                            {{__('Daftar Akun')}}
+                        </a>
+                    @else
+                        <a href="{{route('cart.index')}}" class="col col-md-4 btn btn-outline-secondary btn-lg fw-semibold">
+                            {{__('Cek Order')}}
+                        </a>
+                    @endguest
+
                 </div>
             </div>
             <form action="{{route('product.index')}}" class="form col col-md-5 shadow rounded p-4" method="GET">

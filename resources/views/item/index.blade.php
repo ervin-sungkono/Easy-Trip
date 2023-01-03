@@ -16,10 +16,9 @@
         </div>
     </div>
     <div class="row mb-3">
-        <div class="row py-3 row-cols-sm-1 row-cols-md-2 row-cols-lg-4">
+        <div class="d-flex flex-wrap justify-content-center gap-3 py-3">
             @foreach ($items as $item)
-                <div class="col px-2 mb-4 d-flex justify-content-center">
-                    @include('components.product-card', array(
+                @include('components.product-card', array(
                         'id' => $item->id,
                         'name' => $item->name,
                         'location' => $item->location,
@@ -27,8 +26,7 @@
                         'price' => $item->price,
                         'imageUrl' => $item->image,
                         'status' => $item->status,
-                    ))
-                </div>
+                ))
             @endforeach
         </div>
         <div class="d-flex justify-content-center">

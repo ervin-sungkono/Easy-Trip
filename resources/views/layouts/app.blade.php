@@ -64,14 +64,14 @@
                                     <a href="#" class="nav-link">{{__('Tiket Saya')}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">{{__('Cek Order')}}</a>
+                                    <a href="{{route('cart.index')}}" class="nav-link">{{__('Cek Order')}}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">{{__('Histori')}}</a>
                                 </li>
                             @elseif (Auth::user()->role === 'admin')
                             <li class="nav-item">
-                                <a href="#" class="nav-link">{{__('Tambah Produk')}}</a>
+                                <a href="{{route('product.form')}}" class="nav-link">{{__('Tambah Produk')}}</a>
                             </li>
                             @endif
                         @endauth
@@ -92,7 +92,7 @@
                             @else
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }}
+                                        {{ explode(" ", Auth::user()->name)[0] }}
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -198,5 +198,6 @@
           </footer>
         </div>
     </div>
+    @yield('scripts')
 </body>
 </html>
