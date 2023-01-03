@@ -18,6 +18,7 @@ class CreateCartDetailsTable extends Migration
             $table->unsignedInteger('cart_id')->foreign()->references('id')->on('carts')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedInteger('item_id')->foreign()->references('id')->on('items');
             $table->integer('quantity');
+            $table->date('ticket_date');
             $table->timestamps();
         });
     }

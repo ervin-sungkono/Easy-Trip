@@ -6,12 +6,16 @@ use App\Models\Cart;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\ItemRequest;
 
 class ItemController extends Controller
 {
     public function index(Request $request){
         $query = $request->query('q');
-        $items = Item::where('name', 'LIKE', "%{$query}%")->paginate(20);
+        $loc = $request->query('loc');
+        $items = Item::where('name', 'LIKE', "%{$query}%")
+            ->where('location', 'LIKE', "%{$loc}%")
+            ->paginate(20);
         return view('item.index', compact('items', 'query'));
     }
 
@@ -33,8 +37,8 @@ class ItemController extends Controller
 
         $imageUrl = Storage::disk('public')->putFileAs('images', $file, $filename);
         $item = Item::create([
-            'itemName' => $validated['name'],
-            'itemDescription' => $validated['description'],
+            'name' => $validated['name'],
+            'description' => $validated['description'],
             'image' => $imageUrl,
             'location' => $validated['location'],
             'status' => $validated['status'],
@@ -48,7 +52,7 @@ class ItemController extends Controller
 
         Storage::disk('public')->delete($item->imageUrl);
         $item->delete();
-        $carts = Cart::where('itemID', '=', $id);
+        $carts = Cart::where('item_id', '=', $id);
         $carts->delete();
 
         return redirect()->route('home')->with('success','Item deleted successfully!');

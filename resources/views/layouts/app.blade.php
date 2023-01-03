@@ -58,14 +58,25 @@
                         <li class="nav-item">
                             <a href="{{route('product.index')}}" class="nav-link">{{__('Pesan Tiket')}}</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">{{__('Cek Order')}}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">{{__('Histori')}}</a>
-                        </li>
+                        @auth
+                            @if(Auth::user()->role === 'member')
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">{{__('Tiket Saya')}}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">{{__('Cek Order')}}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">{{__('Histori')}}</a>
+                                </li>
+                            @elseif (Auth::user()->role === 'admin')
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">{{__('Tambah Produk')}}</a>
+                            </li>
+                            @endif
+                        @endauth
                         <!-- Authentication Links -->
-                        <div class="ms-3">
+                        <div class="ms-md-3">
                             @guest
                                 @if (Route::currentRouteName() != 'login')
                                     <li class="nav-item">
@@ -104,6 +115,22 @@
         </nav>
 
         <main class="py-4" @yield('background')>
+            @if(session('fail'))
+                <div class="container py-2">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{session('fail')}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            @endif
+            @if(session('success'))
+                <div class="container py-2">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{session('success')}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            @endif
             @yield('content')
         </main>
 

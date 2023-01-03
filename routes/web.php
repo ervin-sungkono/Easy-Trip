@@ -24,9 +24,11 @@ Route::prefix('admin')->middleware('isAdmin')->group(function () {
 Route::middleware('auth')->group(function () {
 // Authenticated User Routes
 // GET
-
+Route::get('/cart', [CartController::class, 'showCart'])->name('cart.detail');
+Route::get('/cart/{id}', [CartController::class, 'showForm'])->name('cart.form');
+Route::get('/history', [TransactionController::class, 'getTransaction'])->name('transaction.history');
 // POST
-
+Route::post('/cart', [CartController::class, 'store'])->name('cart.create');
 // PATCH
 
 // DELETE

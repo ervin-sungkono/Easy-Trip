@@ -1,4 +1,4 @@
-<div class="card shadow bg-white h-100" style="max-width: 18rem">
+<div class="card shadow bg-white h-100 d-flex-sm" style="max-width: 18rem; min-width: 16rem;">
     @if(file_exists(public_path().'\storage/'.$imageUrl))
         <img src="{{asset('storage/'.$imageUrl)}}" class="card-img-top" alt="{{$name}}">
     @else

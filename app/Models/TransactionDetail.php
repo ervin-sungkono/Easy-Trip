@@ -9,7 +9,7 @@ class TransactionDetail extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['trans_id', 'item_id', 'quantity'];
+    protected $fillable = ['trans_id', 'item_id', 'quantity', 'ticket_date'];
 
     protected $appends = ['total_price'];
 

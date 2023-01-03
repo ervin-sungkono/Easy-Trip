@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'EasyTrip | Pesan Tiket')
+
 @section('content')
 <div class="container min-vh-100">
     <div class="row mb-3 d-flex flex-column align-items-center">

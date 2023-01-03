@@ -15,27 +15,27 @@
                     </a>
                 </div>
             </div>
-            <form action="#" class="form col col-md-5 shadow rounded p-4">
+            <form action="{{route('product.index')}}" class="form col col-md-5 shadow rounded p-4" method="GET">
                 <div class="row mb-3">
                     <label for="location" class="fw-semibold">Destinasi</label>
                     <div class="input-group flex-nowrap mt-2">
-                        <i class="bi bi-geo-alt-fill fs-5 text-secondary input-group-text" id="addon-wrapping"></i>
-                        <input type="text" class="form-control" placeholder="Destinasi (ex: Jakarta, Bandung, dst)" name="location" id="location" aria-describedby="addon-wrapping" value={{old('location')}}>
+                        <i class="bi bi-geo-alt-fill fs-5 text-secondary input-group-text"></i>
+                        <input type="text" class="form-control" placeholder="Destinasi (ex: Jakarta, Bandung, dst)" name="loc" id="location" value="{{old('location')}}" required>
                     </div>
                 </div>
                 <div class="row mb-5">
                     <div class="col">
                         <label for="trip-date" class="fw-semibold">Tanggal</label>
                         <div class="input-group flex-nowrap mt-2">
-                            <i class="bi bi-calendar-event-fill fs-5 text-secondary input-group-text" id="addon-wrapping"></i>
-                            <input type="date" class="form-control" name="trip_date" id="trip-date" aria-describedby="addon-wrapping" value={{now()}}>
+                            <i class="bi bi-calendar-event-fill fs-5 text-secondary input-group-text"></i>
+                            <input type="date" class="form-control" name="trip_date" id="trip-date" value={{now()}}>
                         </div>
                     </div>
                     <div class="col">
-                        <label for="person" class="fw-semibold">Jumlah Orang</label>
+                        <label for="quantity" class="fw-semibold">Jumlah Orang</label>
                         <div class="input-group flex-nowrap mt-2">
-                            <i class="bi bi-person-fill fs-5 text-secondary input-group-text" id="addon-wrapping"></i>
-                            <input type="text" class="form-control" placeholder="Jumlah Orang" name="person" id="person" aria-describedby="addon-wrapping" value={{old('person')}}>
+                            <i class="bi bi-person-fill fs-5 text-secondary input-group-text"></i>
+                            <input type="number" class="form-control" placeholder="ex: 1" name="quantity" id="quantity" value={{old('quantity')}} min="1">
                         </div>
                     </div>
                 </div>

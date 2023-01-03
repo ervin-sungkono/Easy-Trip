@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCartDetailRequest extends FormRequest
+class CartRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class UpdateCartDetailRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class UpdateCartDetailRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'quantity' => 'bail | required | gt:0',
+            'ticket_date' => 'bail | required | date | after_or_equal:'.date('Y-m-d'),
         ];
     }
 }
