@@ -10,28 +10,39 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 
 Route::prefix('admin')->middleware('isAdmin')->group(function () {
-// Admin Routes
-// GET
-Route::get('/product', [ItemController::class, 'showForm'])->name('product.form');
-// POST
-Route::post('/product', [ItemController::class, 'store'])->name('product.create');
-// PATCH
+    // Admin Routes
+    // GET
+    Route::get('/product', [ItemController::class, 'showForm'])->name('product.form');
+    // POST
+    Route::post('/product', [ItemController::class, 'store'])->name('product.create');
+    // PATCH
 
-// DELETE
+    // DELETE
+});
 
+Route::middleware('isUser')->group(function (){
+    // GET
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::get('/cart/{id}', [CartController::class, 'showForm'])->name('cart.form');
+    Route::get('/history', [TransactionController::class, 'index'])->name('transaction.index');
+    // POST
+    Route::post('/cart', [CartController::class, 'store'])->name('cart.create');
+    Route::post('/checkout',[TransactionController::class, 'store'])->name('transaction.create');
+    // PATCH
+    Route::put('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
+    //DELETE
+    Route::delete('/cart/{id}', [CartController::class, 'delete'])->name('cart.delete');
 });
 
 Route::middleware('auth')->group(function () {
-// Authenticated User Routes
-// GET
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::get('/cart/{id}', [CartController::class, 'showForm'])->name('cart.form');
-Route::get('/history', [TransactionController::class, 'getTransaction'])->name('transaction.history');
-// POST
-Route::post('/cart', [CartController::class, 'store'])->name('cart.create');
-// PATCH
+    // Authenticated User Routes
+    // GET
 
-// DELETE
+    // POST
+
+    // PATCH
+
+    // DELETE
 
 });
 

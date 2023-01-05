@@ -36,6 +36,25 @@
         .playfair{
             font-family: 'Playfair Display', serif;!important
         }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
     </style>
 </head>
 <body>
@@ -67,7 +86,7 @@
                                     <a href="{{route('cart.index')}}" class="nav-link">{{__('Cek Order')}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">{{__('Histori')}}</a>
+                                    <a href="{{route('transaction.index')}}" class="nav-link">{{__('Histori')}}</a>
                                 </li>
                             @elseif (Auth::user()->role === 'admin')
                             <li class="nav-item">

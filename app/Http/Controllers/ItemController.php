@@ -49,10 +49,36 @@ class ItemController extends Controller
         return redirect()->route('product.create')->with('status', $item ? 'Produk berhasil ditambahkan!' : 'Gagal menambahkan produk');
     }
 
+    public function update(ItemRequest $request, $id){
+        $validated = $request->validated();
+
+        $item = Item::findOrFail($id);
+        Storage::disk('public')->delete($oldItem->image);
+
+        $file = $request->file('image');
+        $name = $file->getClientOriginalName();
+        $filename = str_replace(" ", "", $name).'_'.now()->timestamp;
+
+        $checked = $request->has('active') ? true : false;
+
+        $imageUrl = Storage::disk('public')->putFileAs('images', $file, $filename);
+
+        $newItem = $item->update([
+            'name' => $validated['name'],
+            'description' => $validated['description'],
+            'image' => $imageUrl,
+            'location' => $validated['location'],
+            'status' => $checked,
+            'price' => $validated['price']
+        ]);
+
+        return redirect()->route('product.detail', ['id' => $id]);
+    }
+
     public function delete($id){
         $item = Item::findOrFail($id);
 
-        Storage::disk('public')->delete($item->imageUrl);
+        Storage::disk('public')->delete($item->image);
         $item->delete();
         $carts = Cart::where('item_id', '=', $id);
         $carts->delete();
