@@ -23,7 +23,7 @@ class CartController extends Controller
         ],[
             'quantity' => $validated['quantity']
         ]);
-        $status = ($cartDetail->wasRecentlyCreated) ? 'Successfully added item to cart!' : 'Cart updated successfully!';
+        $status = ($cartDetail->wasRecentlyCreated) ? 'Berhasil menambahkan barang ke pesanan' : 'Pesanan berhasil diubah';
 
         return redirect()->route('product.detail', ['id' => $request->item_id])->with('status', $status);
     }

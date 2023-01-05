@@ -32,11 +32,11 @@ class TransactionController extends Controller
             ]);
             if(!$transDetail){
                 $transaction->delete();
-                return redirect()->route('cart.detail')->with('fail','Fail to checkout');
+                return redirect()->route('cart.detail')->with('fail','Pembayaran gagal');
             }else{
                 $cart->delete();
             }
         }
-        return redirect()->route('transaction.index')->with('success','Checkout successful!');
+        return redirect()->route('transaction.index')->with('success','Pembayaran berhasil!');
     }
 }

@@ -9,7 +9,7 @@
                 <span class="fs-5 fw-semibold">{{$product_title}}</span>
                 <span class="text-muted">| {{$quantity}} Orang</span>
             </div>
-            <p class="card-text flex-grow-1">{{$ticket_date}}</p>
+            <p class="card-text flex-grow-1">{{$ticket_date->format('d-m-Y')}}</p>
             <div class="d-flex justify-content-between align-items-center">
                 <p class="card-text fw-semibold mb-0">IDR {{number_format($product_price,0,',','.')}}</p>
                 <div class="d-flex align-items-center gap-2">

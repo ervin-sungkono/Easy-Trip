@@ -13,6 +13,8 @@ class CartDetail extends Model
 
     protected $appends = ['total_price'];
 
+    protected $dates = ['ticket_date'];
+    
     public function item(){
         return $this->hasOne(Item::class, 'id', 'item_id');
     }
