@@ -13,11 +13,13 @@ Route::prefix('admin')->middleware('isAdmin')->group(function () {
     // Admin Routes
     // GET
     Route::get('/product', [ItemController::class, 'showForm'])->name('product.form');
+    Route::get('/product/{id}', [ItemController::class, 'edit']) ->name('product.edit');
     // POST
     Route::post('/product', [ItemController::class, 'store'])->name('product.create');
     // PATCH
-
+    Route::patch('/product/{id}', [ItemController::class, 'update'])->name('product.update');
     // DELETE
+    Route::delete('/product/{id}', [ItemController::class, 'delete'])->name('product.delete');
 });
 
 Route::middleware('isUser')->group(function (){

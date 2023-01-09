@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cart;
+use App\Models\CartDetail;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ItemRequest;
+use App\Http\Requests\UpdateItemRequest;
 
 class ItemController extends Controller
 {
@@ -17,6 +18,11 @@ class ItemController extends Controller
             ->where('location', 'LIKE', "%{$loc}%")
             ->paginate(20);
         return view('item.index', compact('items', 'query'));
+    }
+
+    public function edit($id){
+        $item = Item::findOrFail($id);
+        return view('item.edit', compact('item'));
     }
 
     public function showForm(){
@@ -35,7 +41,7 @@ class ItemController extends Controller
         $name = $file->getClientOriginalName();
         $filename = str_replace(" ", "", $name).'_'.now()->timestamp;
 
-        $checked = $request->has('active') ? true : false;
+        $checked = $request->has('status') ? true : false;
 
         $imageUrl = Storage::disk('public')->putFileAs('images', $file, $filename);
         $item = Item::create([
@@ -49,40 +55,56 @@ class ItemController extends Controller
         return redirect()->route('product.create')->with('status', $item ? 'Produk berhasil ditambahkan!' : 'Gagal menambahkan produk');
     }
 
-    public function update(ItemRequest $request, $id){
+    public function update($id, UpdateItemRequest $request){
         $validated = $request->validated();
 
         $item = Item::findOrFail($id);
-        Storage::disk('public')->delete($oldItem->image);
 
-        $file = $request->file('image');
-        $name = $file->getClientOriginalName();
-        $filename = str_replace(" ", "", $name).'_'.now()->timestamp;
+        $checked = $request->has('status') ? true : false;
+        $newItem;
 
-        $checked = $request->has('active') ? true : false;
+        if($request->file('image')){
+            Storage::disk('public')->delete($item->image);
 
-        $imageUrl = Storage::disk('public')->putFileAs('images', $file, $filename);
+            $file = $request->file('image');
+            $name = $file->getClientOriginalName();
+            $filename = str_replace(" ", "", $name).'_'.now()->timestamp;
 
-        $newItem = $item->update([
-            'name' => $validated['name'],
-            'description' => $validated['description'],
-            'image' => $imageUrl,
-            'location' => $validated['location'],
-            'status' => $checked,
-            'price' => $validated['price']
-        ]);
+            $imageUrl = Storage::disk('public')->putFileAs('images', $file, $filename);
 
-        return redirect()->route('product.detail', ['id' => $id]);
+            $newItem = $item->update([
+                'name' => $validated['name'],
+                'description' => $validated['description'],
+                'image' => $imageUrl,
+                'location' => $validated['location'],
+                'status' => $checked,
+                'price' => $validated['price']
+            ]);
+        }else{
+            $newItem = $item->update([
+                'name' => $validated['name'],
+                'description' => $validated['description'],
+                'location' => $validated['location'],
+                'status' => $checked,
+                'price' => $validated['price']
+            ]);
+        }
+
+        $status = $newItem ? 'Berhasil mengubah produk!' : 'Gagal mengubah produk';
+
+        return redirect()->route('product.detail', ['id' => $id])->with($newItem ? 'success' : 'fail', $status);
     }
 
     public function delete($id){
         $item = Item::findOrFail($id);
 
         Storage::disk('public')->delete($item->image);
-        $item->delete();
-        $carts = Cart::where('item_id', '=', $id);
-        $carts->delete();
-
-        return redirect()->route('home')->with('success','Item deleted successfully!');
+        if($item->delete()){
+            $carts = CartDetail::where('item_id', '=', $id);
+            $carts->delete();
+            return redirect()->route('home')->with('success','Berhasil menghapus produk');
+        }else{
+            return redirect()->route('home')->with('fail','Gagal menghapus produk');
+        }
     }
 }

@@ -45,16 +45,24 @@ class CartController extends Controller
         $validated = $request->validated();
 
         $cart = CartDetail::findOrFail($id)->update([
-            'quantity' => $validated['quantity'],
+            'ticket_date' => $validated['ticket_date'],
+            'quantity' => $validated['quantity']
         ]);
 
-        return redirect()->route('cart.detail')->with('success', 'Cart successfully updated!');
+        if($cart)
+        return redirect()->route('cart.index')->with('success', 'Berhasil mengubah keranjang');
+
+        else
+        return redirect()->route('cart.index')->with('fail', 'Gagal mengubah keranjang');
     }
 
     public function delete($id){
         $cart = CartDetail::findOrFail($id);
-        $cart->delete();
 
-        return redirect()->route('cart.detail')->with('success', 'Cart successfully deleted!');
+        if($cart->delete())
+        return redirect()->route('cart.index')->with('success', 'Berhasil menghapus keranjang');
+
+        else
+        return redirect()->route('cart.index')->with('fail', 'Gagal menghapus keranjang');
     }
 }
