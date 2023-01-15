@@ -16,7 +16,7 @@
                     <div class="row row-cols-1 justify-content-end">
                         <div class="col mb-3">
                             <label for="text">Review</label>
-                            <textarea class="form-control" name="text" id="text" rows="6" placeholder="Leave your review here..."></textarea>
+                            <textarea class="form-control" name="review" id="review" rows="6" placeholder="Leave your review here..."></textarea>
                         </div>
                         <div class="col mb-3">
                             <label for="rating">Rating</label>
@@ -173,4 +173,18 @@
             </div>
         @endauth
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        const config = {
+            languange : 'id',
+            toolbar : [
+                {name: 'basicstyles', items: ['Bold','Italic','Underline','Strike','-','RemoveFormat']}
+            ],
+            resize_enabled: false,
+            height: 150
+        }
+        CKEDITOR.replace('review', config)
+    </script>
 @endsection
