@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 
@@ -29,6 +31,14 @@ class TransactionController extends Controller
                 'item_id' => $cart->item_id,
                 'ticket_date' => $cart->ticket_date,
                 'quantity' => $cart->quantity,
+            ]);
+            $ticket = Ticket::create([
+                'ticket_id' => Str::random(12),
+                'user_id' => Auth::user()->id,
+                'item_id'=> $cart->item_id,
+                'ticket_date' => $cart->ticket_date,
+                'quantity' => $cart->quantity,
+                'status' => true
             ]);
             if(!$transDetail){
                 $transaction->delete();

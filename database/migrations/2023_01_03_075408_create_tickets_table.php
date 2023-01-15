@@ -18,6 +18,7 @@ class CreateTicketsTable extends Migration
             $table->unsignedInteger('user_id')->foreign()->references('id')->on('users')->onDelete('cascade');
             $table->unsignedInteger('item_id')->foreign()->references('id')->on('items');
             $table->date('ticket_date');
+            $table->integer('quantity');
             $table->boolean('status');
             $table->timestamps();
         });

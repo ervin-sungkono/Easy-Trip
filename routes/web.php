@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 
 Route::prefix('admin')->middleware('isAdmin')->group(function () {
@@ -27,6 +27,8 @@ Route::middleware('isUser')->group(function (){
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::get('/cart/{id}', [CartController::class, 'showForm'])->name('cart.form');
     Route::get('/history', [TransactionController::class, 'index'])->name('transaction.index');
+    Route::get('/ticket', [TicketController::class, 'index'])->name('ticket.index');
+    Route::get('/ticket/download/{id}', [TicketController::class, 'download'])->name('ticket.download');
     // POST
     Route::post('/cart', [CartController::class, 'store'])->name('cart.create');
     Route::post('/checkout',[TransactionController::class, 'store'])->name('transaction.create');

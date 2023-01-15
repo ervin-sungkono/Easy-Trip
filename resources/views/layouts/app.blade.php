@@ -80,7 +80,7 @@
                         @auth
                             @if(Auth::user()->role === 'member')
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">{{__('Tiket Saya')}}</a>
+                                    <a href="{{route('ticket.index')}}" class="nav-link">{{__('Tiket Saya')}}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('cart.index')}}" class="nav-link">{{__('Cek Order')}}</a>
