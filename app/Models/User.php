@@ -35,6 +35,10 @@ class User extends Authenticatable
     }
 
     public function tickets(){
-        return $this->hasMany(Ticket::class,);
+        return $this->hasMany(Ticket::class);
+    }
+
+    public function socialAccounts(){
+        return $this->hasMany(SocialAccount::class);
     }
 }
