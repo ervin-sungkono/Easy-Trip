@@ -2,15 +2,22 @@
 
 @section('content')
 
-<div class="container">
-    @foreach ($tickets as $ticket)
-        <div class="card">
-            <div class="card-body">
-                {{$ticket->item->name}}
-                <a href="{{route('ticket.download', ['id'=>$ticket->ticket_id])}}">Download Here</a>
+<div class="container min-vh-100">
+    <div class="row ">
+        @foreach ($tickets as $ticket)
+            <div class="col-md-6 mb-5">
+                @include('components.ticket-card',array(
+                    'ticket_id' => $ticket->ticket_id,
+                    'product_image' => $ticket->item->image,
+                    'product_title' => $ticket->item->name,
+                    'quantity' => $ticket->quantity,
+                    'ticket_date' => $ticket->ticket_date,
+                    'status' => $ticket->status
+                ))
             </div>
-        </div>
-    @endforeach
+        @endforeach
+    </div>
+
 </div>
 
 @endsection
