@@ -7,6 +7,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\SocialAccountController;
 use Illuminate\Support\Facades\Auth;
 
 Route::prefix('admin')->middleware('isAdmin')->group(function () {
@@ -36,18 +37,6 @@ Route::middleware('isUser')->group(function (){
     Route::put('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
     //DELETE
     Route::delete('/cart/{id}', [CartController::class, 'delete'])->name('cart.delete');
-});
-
-Route::middleware('auth')->group(function () {
-    // Authenticated User Routes
-    // GET
-
-    // POST
-
-    // PATCH
-
-    // DELETE
-
 });
 
 Auth::routes();
