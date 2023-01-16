@@ -22,24 +22,24 @@
                             <div class="input-group mb-2">
                                 <i class="bi bi-envelope-fill fs-5 text-secondary input-group-text"></i>
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus placeholder="Email anda..">
-                            </div>
-                            @error('email')
+                                @error('email')
                                 <span class="invalid-feedback " role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                            </div>
                         </div>
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-left">{{ __('Password') }}</label>
                             <div class="input-group mb-2">
                                 <i class="bi bi-key-fill fs-5 text-secondary input-group-text"></i>
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password anda..">
-                            </div>
-                            @error('password')
+                                @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-secondary fw-semibold text-light w-100 mt-3" >
                             {{ __('Masuk') }}
