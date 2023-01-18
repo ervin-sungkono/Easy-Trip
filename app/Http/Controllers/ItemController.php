@@ -16,7 +16,7 @@ class ItemController extends Controller
         $loc = $request->query('loc');
         $items = Item::where('name', 'LIKE', "%{$query}%")
             ->where('location', 'LIKE', "%{$loc}%")
-            ->paginate(20);
+            ->paginate(12);
         return view('item.index', compact('items', 'query'));
     }
 
