@@ -95,7 +95,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Jika di selatan Bandung ada Kawah Putih, di utara Bandung terdapat Gunung Tangkuban Perahu, gunung stratovolcano yang masih aktif dan menjadi tempat wisata populer di Bandung sejak lama',
             'image' => 'https://asset.kompas.com/crops/ilcgxQBDmeUuoES_SK8mjjhAEvU=/0x0:1000x667/750x500/data/photo/2022/06/27/62b946699ed13.jpg',
             'location' => 'Bandung',
-            'price' => 700000
+            'price' => 20000
         ])->create();
 
         Item::factory(24)->create();
