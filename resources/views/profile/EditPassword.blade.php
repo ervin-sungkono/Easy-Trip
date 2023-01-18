@@ -74,7 +74,7 @@
                     <button type="submit" class="btn btn-secondary fw-semibold text-light w-100 mt-3">
                         {{ __('Save Update') }}
                     </button>
-                    <a href="/profile" class="btn btn-primary mt-md-3">Back</a>
+                    <a href="/profile" class="btn btn-primary fw-semibold text-white mt-md-3">Back</a>
                 </div>
             </form>
         </div>

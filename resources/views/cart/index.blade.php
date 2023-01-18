@@ -8,12 +8,8 @@
             <div class="col-md-6 mb-5" style="overflow-y: scroll; max-height: 85vh">
                 @foreach ($carts as $cart)
                     @include('components.cart-card',array(
-                        'cart_id' => $cart->id,
-                        'product_image' => $cart->item->image,
-                        'product_title' => $cart->item->name,
-                        'quantity' => $cart->quantity,
-                        'ticket_date' => $cart->ticket_date,
-                        'product_price' => $cart->total_price
+                        'cart' => $cart,
+                        'item' => $cart->item
                     ))
                 @endforeach
             </div>

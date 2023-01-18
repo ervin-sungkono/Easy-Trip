@@ -1,7 +1,31 @@
 <div class="card" style="min-width: 16rem;">
     <div class="card-body">
-      <h4 class="card-title">{{$user}}</h4>
-      <h6 class="card-subtitle text-muted mb-3">{{number_format($rating,2)}}/5.00</h6>
-      <p class="card-text">{{strip_tags($text)}}</p>
+        <h4 class="card-title fw-semibold">{{$user->name}}</h4>
+        <div class="d-flex mb-2">
+            @for ($i = 0; $i < $testimony->rating; $i++)
+                <i class="bi bi-star-fill text-warning"></i>
+            @endfor
+        </div>
+        <p class="card-text">{{strip_tags($testimony->text)}}</p>
+        @if(Auth::user()->id === $user->id)
+            <div class="d-flex align-items-center gap-2">
+                <a class="btn btn-warning testimony-btn" href="#" data-route-name={{route('testimony.update', ['id' => $testimony->id])}} data-review={{$testimony->text}} data-rating={{$testimony->rating}} data-bs-toggle="modal" data-bs-target="#testimony-update-modal"><i class="bi bi-pencil-square"></i></a>
+                <form action="{{route('testimony.delete', ['id' => $testimony->id])}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger text-white" >
+                        <i class="bi bi-trash-fill"></i>
+                    </button>
+                </form>
+            </div>
+        @elseif (Auth::user()->role === 'admin')
+            <form action="{{route('testimony.delete', ['id' => $testimony->id])}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger text-white" >
+                    <i class="bi bi-trash-fill"></i>
+                </button>
+            </form>
+        @endif
     </div>
 </div>

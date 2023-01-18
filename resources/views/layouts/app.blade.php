@@ -16,7 +16,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
-
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
@@ -72,25 +72,25 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a href="{{route('home')}}" class="nav-link active">{{__('Beranda')}}</a>
+                            <a href="{{route('home')}}" class="nav-link {{Route::currentRouteName() === 'home' ? "active" : ""}}">{{__('Beranda')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('product.index')}}" class="nav-link">{{__('Pesan Tiket')}}</a>
+                            <a href="{{route('product.index')}}" class="nav-link {{Route::currentRouteName() === 'product.index' ? "active" : ""}}">{{__('Pesan Tiket')}}</a>
                         </li>
                         @auth
                             @if(Auth::user()->role === 'member')
                                 <li class="nav-item">
-                                    <a href="{{route('ticket.index')}}" class="nav-link">{{__('Tiket Saya')}}</a>
+                                    <a href="{{route('ticket.index')}}" class="nav-link {{Route::currentRouteName() === 'ticket.index' ? "active" : ""}}">{{__('Tiket Saya')}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('cart.index')}}" class="nav-link">{{__('Cek Order')}}</a>
+                                    <a href="{{route('cart.index')}}" class="nav-link {{Route::currentRouteName() === 'cart.index' ? "active" : ""}}">{{__('Cek Order')}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('transaction.index')}}" class="nav-link">{{__('Histori')}}</a>
+                                    <a href="{{route('transaction.index')}}" class="nav-link {{Route::currentRouteName() === 'transaction.index' ? "active" : ""}}">{{__('Histori')}}</a>
                                 </li>
                             @elseif (Auth::user()->role === 'admin')
                             <li class="nav-item">
-                                <a href="{{route('product.form')}}" class="nav-link">{{__('Tambah Produk')}}</a>
+                                <a href="{{route('product.form')}}" class="nav-link {{Route::currentRouteName() === 'product.form' ? "active" : ""}}">{{__('Tambah Produk')}}</a>
                             </li>
                             @endif
                         @endauth
@@ -134,7 +134,6 @@
                 </div>
             </div>
         </nav>
-
         <main class="py-4" @yield('background')>
             @if(session('fail'))
                 <div class="container py-2">

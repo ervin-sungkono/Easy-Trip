@@ -19,13 +19,7 @@
         <div class="d-flex flex-wrap justify-content-center gap-3 py-3">
             @foreach ($items as $item)
                 @include('components.product-card', array(
-                        'id' => $item->id,
-                        'name' => $item->name,
-                        'location' => $item->location,
-                        'rating' => $item->avg_rating,
-                        'price' => $item->price,
-                        'imageUrl' => $item->image,
-                        'status' => $item->status,
+                        'item' => $item,
                 ))
             @endforeach
         </div>

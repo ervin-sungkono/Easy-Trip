@@ -12,10 +12,8 @@
                 @foreach ($transactions as $transaction)
                     <div class="col-md-6">
                         @include('components.transaction-card', array(
-                            'transaction_id' => $transaction->id,
-                            'transaction_date' => $transaction->created_at,
-                            'transaction_details' => $transaction->details,
-                            'total_price' => $transaction->details->sum('total_price')
+                            'transaction' => $transaction,
+                            'transaction_details' => $transaction->details
                         ))
                     </div>
                 @endforeach

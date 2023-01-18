@@ -3,6 +3,53 @@
 @section('title', 'EasyTrip | '.$item->name)
 
 @section('content')
+    <div class="modal fade" tabindex="-1" id="testimony-update-modal">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title fw-bold">{{$item->name}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="#" method="POST" id="modal-form">
+                    @method('PATCH')
+                    @csrf
+                    <input type="hidden" name="item_id" value="{{$item->id}}">
+                    <div class="row row-cols-1 justify-content-end">
+                        <div class="col mb-3">
+                            <label for="text">Review</label>
+                            <textarea class="form-control" name="review" id="update-review" rows="6" placeholder="Leave your review here..."></textarea>
+                            @error('review')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="col mb-3">
+                            <label for="rating">Rating</label>
+                            <select class="form-select" name="rating" id="update-rating">
+                                <option value="" selected disabled>Select Rating</option>
+                                <option value="1">⭐</option>
+                                <option value="2">⭐⭐</option>
+                                <option value="3">⭐⭐⭐</option>
+                                <option value="4">⭐⭐⭐⭐</option>
+                                <option value="5">⭐⭐⭐⭐⭐</option>
+                            </select>
+                            @error('rating')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary fw-bold text-white w-100">Submit review</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
     <div class="modal fade" tabindex="-1" id="testimony-modal">
         <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -11,12 +58,18 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="" method="POST">
+                <form action="{{route('testimony.create')}}" method="POST">
                     @csrf
+                    <input type="hidden" name="item_id" value="{{$item->id}}">
                     <div class="row row-cols-1 justify-content-end">
                         <div class="col mb-3">
                             <label for="text">Review</label>
                             <textarea class="form-control" name="review" id="review" rows="6" placeholder="Leave your review here..."></textarea>
+                            @error('review')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="col mb-3">
                             <label for="rating">Rating</label>
@@ -28,6 +81,11 @@
                                 <option value="4">⭐⭐⭐⭐</option>
                                 <option value="5">⭐⭐⭐⭐⭐</option>
                             </select>
+                            @error('rating')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary fw-bold text-white w-100">Submit review</button>
@@ -152,9 +210,8 @@
                     @if($item->testimonies->count() > 0)
                         @foreach ($item->testimonies as $testimony)
                             @include('components.testimony-card', array(
-                                'name' => $testimony->user->name,
-                                'rating' => $testimony->rating,
-                                'text' => $testimony->text
+                                'testimony' => $testimony,
+                                'user' => $testimony->user
                             ))
                         @endforeach
                     @elseif(Auth::user()->role === 'member')
@@ -186,5 +243,14 @@
             height: 150
         }
         CKEDITOR.replace('review', config)
+
+        $(document).ready(function(){
+            $('a.testimony-btn').click(function(e){
+                $('#modal-form').attr('action', $(this).attr('data-route-name'))
+                // CKEDITOR.instances['update-review'].setData($(this).attr('data-review'))
+                $(`#update-rating option[value=${$(this).attr('data-rating')}]`).attr('selected', 'selected')
+                console.log($(this).attr('data-review'), $(this).attr('data-rating'))
+            })
+        })
     </script>
 @endsection

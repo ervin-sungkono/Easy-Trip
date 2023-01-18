@@ -1,7 +1,7 @@
 <div class="card card-body shadow-sm rounded h-100 d-flex flex-column">
     <div class="d-flex justify-content-between">
-        <p>Transaction ID: {{$transaction_id}}</p>
-        <p>Tanggal: {{$transaction_date->format('d-m-Y')}}</p>
+        <p>Transaction ID: {{$transaction->id}}</p>
+        <p>Tanggal: {{$transaction->created_at->format('d-m-Y')}}</p>
     </div>
     <h5 class="card-title fw-bold text-center mb-3">Detail Transaksi</h5>
     <div class="d-flex flex-column flex-grow-1">
@@ -15,6 +15,6 @@
     <hr>
     <div class="d-flex justify-content-between fw-semibold">
         <p>Total</p>
-        <p>IDR {{number_format($total_price,0,',','.')}}</p>
+        <p>IDR {{number_format($transaction_details->sum('total_price'),0,',','.')}}</p>
     </div>
 </div>

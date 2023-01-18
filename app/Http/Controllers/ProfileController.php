@@ -7,9 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Models\User;
-use App\Models\SocialAccount;
-use Session;
-use Cookie;
 
 class ProfileController extends Controller
 {
