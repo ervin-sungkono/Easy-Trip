@@ -12,6 +12,7 @@ git clone https://github.com/ervin-sungkono/Easy-Trip
 1. Buka projek laravel yang sudah di clone pada Visual Studio Code
 
 *Semua step dibawah ini dilakukan dalam terminal*
+
 2. Setup Laravel & install npm dependencies
 ```sh
 composer install
