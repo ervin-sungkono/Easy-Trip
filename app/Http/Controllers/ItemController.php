@@ -43,7 +43,8 @@ class ItemController extends Controller
 
         $checked = $request->has('status') ? true : false;
 
-        $imageUrl = Storage::disk('public')->putFileAs('images', $file, $filename);
+        $storage = Storage::disk('public');
+        $imageUrl = $storage->putFileAs('images', $file, $filename);
         $item = Item::create([
             'name' => $validated['name'],
             'description' => $validated['description'],
@@ -59,18 +60,19 @@ class ItemController extends Controller
         $validated = $request->validated();
 
         $item = Item::findOrFail($id);
+        $storage = Storage::disk('public');
 
         $checked = $request->has('status') ? true : false;
-        $newItem;
+        $newItem = null;
 
         if($request->file('image')){
-            Storage::disk('public')->delete($item->image);
+            $storage->delete($item->image);
 
             $file = $request->file('image');
             $name = $file->getClientOriginalName();
             $filename = str_replace(" ", "", $name).'_'.now()->timestamp;
 
-            $imageUrl = Storage::disk('public')->putFileAs('images', $file, $filename);
+            $imageUrl = $storage->putFileAs('images', $file, $filename);
 
             $newItem = $item->update([
                 'name' => $validated['name'],
