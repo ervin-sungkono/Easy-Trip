@@ -24,7 +24,6 @@ Route::prefix('admin')->middleware('isAdmin')->group(function () {
     Route::patch('/product/{id}', [ItemController::class, 'update'])->name('product.update');
     // DELETE
     Route::delete('/product/{id}', [ItemController::class, 'delete'])->name('product.delete');
-    Route::delete('/review/{id}', [TestimonyController::class, 'delete'])->name('testimony.delete');
 });
 
 Route::middleware('isUser')->group(function (){
@@ -41,10 +40,9 @@ Route::middleware('isUser')->group(function (){
     Route::post('/review', [TestimonyController::class, 'store'])->name('testimony.create');
     // PATCH
     Route::put('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
-    Route::patch('/review/{id}', [CartController::class, 'update'])->name('testimony.update');
+    Route::patch('/review/{id}', [TestimonyController::class, 'update'])->name('testimony.update');
     //DELETE
     Route::delete('/cart/{id}', [CartController::class, 'delete'])->name('cart.delete');
-    Route::delete('/review/{id}', [TestimonyController::class, 'delete'])->name('testimony.delete');
 });
 
 Route::middleware('auth')->group(function (){
@@ -53,6 +51,7 @@ Route::middleware('auth')->group(function (){
     Route::get('/changepassword', [ProfileController::class, 'changePassword'])->name('changePassword');
     Route::post('/profileupdate', [ProfileController::class, 'profileUpdate'])->name('profile.Update');
     Route::post('/passwordupdate', [ProfileController::class, 'changePasswordSave'])->name('postChangePassword');
+    Route::delete('/review/{id}', [TestimonyController::class, 'delete'])->name('testimony.delete');
 });
 
 Auth::routes();

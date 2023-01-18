@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Testimony;
 use App\Http\Requests\TestimonyRequest;
+use App\Http\Requests\UpdateTestimonyRequest;
 use Illuminate\Support\Facades\Auth;
 
 class TestimonyController extends Controller
@@ -25,13 +26,13 @@ class TestimonyController extends Controller
         return redirect()->route('product.detail', ['id' => $request->item_id])->with($status, $statusText);
     }
 
-    public function update(TestimonyRequest $request, $id){
-        $validated = $request->validate();
+    public function update($id, UpdateTestimonyRequest $request){
+        $validated = $request->validated();
 
         $testimony = Testimony::findOrFail($id);
 
-        $updatedTestimony = $testimony::update([
-            'text' => $validated['review'],
+        $updatedTestimony = $testimony->update([
+            'text' => $validated['update-review'],
             'rating' => $validated['rating'],
         ]);
 
@@ -52,7 +53,7 @@ class TestimonyController extends Controller
         $deleted = $testimony->delete();
 
         $status = $deleted ? "success" : "fail";
-        $statusText = $deleted ? "Berhasil mengubah review" : "Gagal mengubah review";
+        $statusText = $deleted ? "Berhasil menghapus review" : "Gagal menghapus review";
 
         return redirect()->route('product.detail', ['id' => $item_id])->with($status, $statusText);
     }

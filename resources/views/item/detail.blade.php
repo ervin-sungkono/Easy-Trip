@@ -18,8 +18,8 @@
                     <div class="row row-cols-1 justify-content-end">
                         <div class="col mb-3">
                             <label for="text">Review</label>
-                            <textarea class="form-control" name="review" id="update-review" rows="6" placeholder="Leave your review here..."></textarea>
-                            @error('review')
+                            <textarea class="form-control" name="update-review" id="update-review" rows="6" placeholder="Leave your review here..."></textarea>
+                            @error('update-review')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -28,7 +28,6 @@
                         <div class="col mb-3">
                             <label for="rating">Rating</label>
                             <select class="form-select" name="rating" id="update-rating">
-                                <option value="" selected disabled>Select Rating</option>
                                 <option value="1">⭐</option>
                                 <option value="2">⭐⭐</option>
                                 <option value="3">⭐⭐⭐</option>
@@ -42,7 +41,7 @@
                             @enderror
                         </div>
                         <div class="col-md-4">
-                            <button type="submit" class="btn btn-primary fw-bold text-white w-100">Submit review</button>
+                            <button type="submit" class="btn btn-primary fw-bold text-white w-100">Update review</button>
                         </div>
                     </div>
                 </form>
@@ -183,7 +182,7 @@
                 </div>
                 @if(Auth::check() && Auth::user()->role === 'admin')
                     <div class="d-flex gap-3">
-                        <a href="{{route('product.edit',['id' => $item->id])}}" class="btn btn-primary fw-bold text-white flex-grow-1">Ubah Produk</a>
+                        <a href="{{route('product.edit',['id' => $item->id])}}" class="btn btn-primary fw-bold text-white flex-grow-1">Ubah Item</a>
                         <form action="{{route('product.delete', ['id' => $item->id])}}" class="flex-grow-1" method="POST">
                             @method('DELETE')
                             @csrf
@@ -217,8 +216,8 @@
                     @elseif(Auth::user()->role === 'member')
                         <div class="card" style="width: 16rem; min-width: 16rem;">
                             <div class="card-body">
-                                <h4 class="card-title text-muted fw-bold">No reviews yet</h4>
-                                <p class="card-text text-muted">be the first one to make a review!</p>
+                                <h4 class="card-title text-muted fw-bold">Belum ada review</h4>
+                                <p class="card-text text-muted">jadilah yang pertama untuk membuat review!</p>
                                 <button class="btn btn-primary text-white fw-semibold" data-bs-toggle="modal" data-bs-target="#testimony-modal">
                                     <span>Add Review</span>
                                     <i class="bi bi-plus-lg"></i>
@@ -243,13 +242,13 @@
             height: 150
         }
         CKEDITOR.replace('review', config)
+        CKEDITOR.replace('update-review', config)
 
         $(document).ready(function(){
             $('a.testimony-btn').click(function(e){
                 $('#modal-form').attr('action', $(this).attr('data-route-name'))
-                // CKEDITOR.instances['update-review'].setData($(this).attr('data-review'))
-                $(`#update-rating option[value=${$(this).attr('data-rating')}]`).attr('selected', 'selected')
-                console.log($(this).attr('data-review'), $(this).attr('data-rating'))
+                CKEDITOR.instances['update-review'].setData($(this).attr('data-review'))
+                $('#update-rating').val($(this).attr('data-rating')).change()
             })
         })
     </script>
