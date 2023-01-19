@@ -37,7 +37,7 @@
                     <div class="col col-form-label text-md-right d-flex">
                         <div class="input-group mb-2">
                             <i class="bi bi-key-fill fs-5 text-secondary input-group-text"></i>
-                            <input id="current_password" type="password" class="form-control @error('current_password') is-invalid @enderror"  name="current_password" placeholder="Password Lama anda..">
+                            <input id="current_password" type="password" class="form-control @error('current_password') is-invalid @enderror"  name="current_password" placeholder="Password lama anda.." autofocus>
                             @error('current_password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

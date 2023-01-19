@@ -20,7 +20,7 @@
                             <label for="name" class="col col-form-label text-md-right d-flex " >{{ __('Full Name') }} </label>
                             <div class="input-group mb-2">
                                 <i class="bi bi-pencil-fill fs-5 text-secondary input-group-text"></i>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" id ="name" name="name" value="{{Auth::user()->name}}" placeholder="Nama anda..">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" id ="name" name="name" value="{{Auth::user()->name}}" placeholder="Nama anda.." autofocus>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -33,7 +33,7 @@
                             <label for="email" class="col col-form-label text-md-right d-flex " >{{ __('E-Mail') }} </label>
                             <div class="input-group mb-2">
                                 <i class="bi bi-envelope-fill fs-5 text-secondary input-group-text"></i>
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{Auth::user()->email}}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{Auth::user()->email}}" required autocomplete="email">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

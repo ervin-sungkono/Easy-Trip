@@ -24,11 +24,11 @@ class isUser
                 return $next($request);
 
             }else{
-                return redirect()->route('home')->with('fail', 'Not authorized, please check your credentials');
+                return redirect()->route('home')->with('fail', 'Akses ditolak, mohon mengecek kredential anda');
             }
 
         }else{
-            return redirect()->route('login')->with('fail', 'Please login first');
+            return redirect()->route('login')->with('fail', 'Mohon memasuki akun terlebih dahulu');
         }
     }
 }

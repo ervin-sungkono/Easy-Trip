@@ -17,13 +17,13 @@
                     <p class="card-text d-flex justify-content-center align-items-center"><i class="bi bi-envelope-fill text-primary fs-5 me-2"></i><span>{{Auth::user()->email}}</span></p>
                     @if(Auth::user()->socialAccounts->count() > 0)
                         @foreach (Auth::user()->socialAccounts as $social)
-                            <p class="card-text"><i class="bi bi-{{$social->provider}} text-primary me-2"></i><span>Signed in with {{$social->provider}}</span></p>
+                            <p class="card-text"><i class="bi bi-{{$social->provider}} text-primary me-2"></i><span>Tersambung dengan akun {{$social->provider}}</span></p>
                         @endforeach
                     @endif
                     @if (Auth::user()->role === 'member')
-                        <a class="btn btn-primary fw-semibold text-white" href="/editprofile">Edit Profile</a>
+                        <a class="btn btn-primary fw-semibold text-white" href="/editprofile">Ubah Profile</a>
                     @endif
-                    <a class="ms-3 btn btn-outline-primary fw-semibold" href="/changepassword">Edit Password</a>
+                    <a class="ms-3 btn btn-outline-primary fw-semibold" href="/changepassword">Ganti Password</a>
                 </div>
             </div>
         </div>

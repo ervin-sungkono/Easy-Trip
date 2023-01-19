@@ -49,17 +49,17 @@ class ProfileController extends Controller
 
         if (!Hash::check($request->get('current_password'), $auth->password))
         {
-            return back()->with('error', "Current Password is Invalid");
+            return back()->with('error', "Password lama masih salah");
         }
 
         if (strcmp($request->get('current_password'), $request->new_password) == 0)
         {
-            return redirect()->back()->with("error", "New Password cannot be same as your current password.");
+            return redirect()->back()->with("error", "Password baru tidak boleh sama dengan password lama");
         }
 
         $user =  User::find($auth->id);
         $user->password =  Hash::make($request->new_password);
         $user->save();
-        return back()->with('success', "Password Changed Successfully");
+        return back()->with('success', "Password berhasil diubah");
     }
 }
