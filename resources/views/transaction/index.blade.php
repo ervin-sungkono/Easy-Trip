@@ -7,10 +7,10 @@
         <div class="display-6 playfair fw-bold text-center mb-3">
             Histori Transaksi
         </div>
-        <div class="row row-cols-1 row-cols-md-2 justify-content-center">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center">
             @if($transactions->count() > 0)
                 @foreach ($transactions as $transaction)
-                    <div class="col-md-6">
+                    <div class="col-md-6 mb-3">
                         @include('components.transaction-card', array(
                             'transaction' => $transaction,
                             'transaction_details' => $transaction->details
