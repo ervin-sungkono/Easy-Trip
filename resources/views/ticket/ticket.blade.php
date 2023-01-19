@@ -61,7 +61,7 @@
                 <div><b>Status: </b> {{$ticket->status? "Aktif":"Sudah Digunakan"}}</div>
             </div>
             <div class="tanggal">
-               <b>Tanggal: </b><i>{{$ticket->ticket_date}}</i>
+               <b>Tanggal: </b><i>{{$ticket->ticket_date->format('j F Y')}}</i>
             </div>
         </div>
         <h2 class="ending">

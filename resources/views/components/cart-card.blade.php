@@ -13,7 +13,7 @@
                 <span class="fs-5 fw-semibold">{{$item->name}}</span>
                 <span class="text-muted">| {{$cart->quantity}} Orang</span>
             </div>
-            <p class="card-text flex-grow-1">{{$cart->ticket_date->format('d-m-Y')}}</p>
+            <p class="card-text flex-grow-1">{{$cart->ticket_date->format('j F Y')}}</p>
             <div class="d-flex justify-content-between align-items-center">
                 <p class="card-text fw-semibold mb-0">IDR {{number_format($cart->total_price,0,',','.')}}</p>
                 <div class="d-flex align-items-center gap-2">

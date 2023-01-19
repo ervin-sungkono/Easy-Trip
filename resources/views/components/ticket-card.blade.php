@@ -13,7 +13,7 @@
                 <span class="fs-5 fw-semibold">{{$item->name}}</span>
                 <span class="text-muted">| {{$ticket->quantity}} Orang</span>
             </div>
-            <p class="card-text flex-grow-1">{{$ticket->ticket_date->format('d-m-Y')}}</p>
+            <p class="card-text flex-grow-1">{{$ticket->ticket_date->format('j F Y')}}</p>
             <div class="d-flex justify-content-between align-items-center">
                 <p>Status: <span class="@if($ticket->status)text-success @else text-danger @endif">{{$ticket->status?"Aktif":"Sudah Digunakan"}}</span></p>
                 <a class="btn btn-primary fw-semibold text-white" href="{{route('ticket.download', ['id' => $ticket->ticket_id])}}"><i class="bi bi-download me-2"></i>Unduh Tiket</a>
