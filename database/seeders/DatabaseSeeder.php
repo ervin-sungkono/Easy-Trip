@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'member@example.com',
         ]);
 
+        User::factory(10)->create();
+
         Item::factory(12)->sequence([
             'name' => 'Monumen Nasional',
             'description' => 'Bangunan setinggi 132 meter ini dibangun untuk menghormati perjuangan Kemerdekaan. Anda dapat menikmati pemandangan arsitektur yang menakjubkan ini dari bawah atau Anda dapat memanjat sampai ke puncak dan menikmati pemandangan kota yang menakjubkan',

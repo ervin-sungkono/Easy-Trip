@@ -104,9 +104,9 @@ class ItemController extends Controller
         if($item->delete()){
             $carts = CartDetail::where('item_id', '=', $id);
             $carts->delete();
-            return redirect()->route('home')->with('success','Berhasil menghapus produk');
+            return redirect()->route('product.index')->with('success','Berhasil menghapus produk');
         }else{
-            return redirect()->route('home')->with('fail','Gagal menghapus produk');
+            return redirect()->route('product.index')->with('fail','Gagal menghapus produk');
         }
     }
 }
