@@ -1,7 +1,7 @@
 # Projek Web Programming (EasyTrip)
 Deskripsi: EasyTrip merupakan sebuah aplikasi untuk memesan tiket tempat wisata yang ada di Indonesia. 
 
-Requirement untuk menjalankan projek ini:
+## Requirement untuk menjalankan projek ini:
 - Download XAMPP di https://www.apachefriends.org/download.html
 - Buka dan jalankan XAMPP, kemudian buat database baru agar bisa disambungkan dengan projek
 
@@ -15,7 +15,8 @@ git clone https://github.com/ervin-sungkono/Easy-Trip
 ## Setup Guide
 1. Buka projek laravel yang sudah di clone pada Visual Studio Code
 
-*Semua step dibawah ini dilakukan dalam terminal
+> *Semua step dibawah ini dilakukan dalam terminal*
+
 
 2. Setup Laravel & install npm dependencies
 ```sh
@@ -37,25 +38,18 @@ Kemudian tambahkan credentials dibawah ini pada file .env tersebut
 
 | Variable | Description |
 | :--- | :--- |
-| `DB_DATABASE` | Your database name |
-| `MAIL_USERNAME` | Your email username* |
-| `MAIL_PASSWORD` | Your email password* |
-| `MAIL_ENCRYPTION` | Mail encryption type* |
-| `MAIL_FROM_ADDRESS` | Your email address |
-| `GITHUB_CLIENT_ID` | Your Github Client ID |
-| `GITHUB_CLIENT_SECRET` | Your Github Client Secret |
-| `GOOGLE_CLIENT_ID` | Your Google Client ID |
-| `GOOGLE_CLIENT_SECRET` | Your Google Client Secret |
-*Credentials ini bisa didapatkan dari https://mailtrap.io
+| `DB_DATABASE` | Nama Database yang dibuat di XAMPP |
+| `GOOGLE_CLIENT_ID` | Google Client ID Anda |
+| `GOOGLE_CLIENT_SECRET` | Google Client Secret Anda |
 
-5. Migrate Database dan Seeder
- ```sh
-php artisan migrate:fresh --seed
-```
-
-6. Generate application key
+5. Generate application key
  ```sh
 php artisan key:generate
+```
+
+6. Migrate Database dan Seeder
+ ```sh
+php artisan migrate:fresh --seed
 ```
 
 7. Run app
