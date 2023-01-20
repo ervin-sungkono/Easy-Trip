@@ -33,12 +33,12 @@ class DatabaseSeeder extends Seeder
         ], [
             'name' => 'Museum Pusaka (Taman Mini Indonesia Indah)',
             'description' => 'Taman mini Indonesia Indah adalah tempat yang wajib Anda kunjungi jika Anda ingin menjelajahi sejarah dan budaya masyarakat Indonesia',
-            'image' => 'https://cdn.antaranews.com/cache/800x533/2022/05/05/antarafoto-libur-lebaran-di-tmii-05052022-ada-2_1.jpg',
+            'image' => 'https://asset.kompas.com/crops/MamNPh9l0TZaSLTA0DJ4ZJv13sI=/2x0:902x600/750x500/data/photo/2021/09/25/614ecf8a4f82c.jpg',
             'location' => 'Jakarta',
             'price' => 12000
         ], [
             'name' => 'Dufan (Ancol)',
-            'description' => 'Taman besar ini mencakup arena bowling, Dunia Fantasi, Ocean Dream Samudra, Taman Petualangan Air dan banyak wahana rollercoaster, akuarium, dan pantai',
+            'description' => 'Dufan atau disebut juga Dunia Fantasi adalah sebuah theme park yang terletak di kawasan Taman Impian Jaya Ancol, Jakarta Utara, Indonesia',
             'image' => 'https://asset-a.grid.id/crop/0x224:1080x1080/x/photo/2021/09/14/asyik-pantai-ancol-dan-dufan-ke-20210914124033.jpg',
             'location' => 'Jakarta',
             'price' => 200000
