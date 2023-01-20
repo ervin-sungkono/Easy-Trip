@@ -39,9 +39,11 @@ Kemudian tambahkan credentials dibawah ini pada file .env tersebut
 
 | Variable | Description |
 | :--- | :--- |
-| `DB_DATABASE` | Nama Database yang dibuat di XAMPP |
+| `DB_DATABASE` | Nama Database yang dibuat di PHPMyAdmin (XAMPP) |
 | `GOOGLE_CLIENT_ID` | Google Client ID Anda |
 | `GOOGLE_CLIENT_SECRET` | Google Client Secret Anda |
+
+Untuk mendapatkan Google Client ID dan Google Client Secret melalui https://console.cloud.google.com
 
 5. Generate application key
  ```sh
