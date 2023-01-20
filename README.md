@@ -3,6 +3,8 @@ Deskripsi: EasyTrip merupakan sebuah aplikasi untuk memesan tiket tempat wisata 
 
 ## Requirement untuk menjalankan projek ini:
 - Download XAMPP di https://www.apachefriends.org/download.html
+- Download bahasa PHP di https://windows.php.net/download
+- Download Composer dengan https://getcomposer.org/Composer-Setup.exe   
 - Buka dan jalankan XAMPP, kemudian buat database baru agar bisa disambungkan dengan projek
 
 ## Installation Guide
