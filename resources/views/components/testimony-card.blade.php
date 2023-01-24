@@ -7,7 +7,7 @@
             @endfor
         </div>
         <p class="card-text">{!! $testimony->text !!}</p>
-        @if(Auth::user()->id === $user->id)
+        @if(Auth::check() && Auth::user()->id === $user->id)
             <div class="d-flex align-items-center gap-2">
                 <a class="btn btn-warning testimony-btn" href="#" data-route-name={{route('testimony.update', ['id' => $testimony->id])}} data-review="{{$testimony->text}}" data-rating="{{$testimony->rating}}" data-bs-toggle="modal" data-bs-target="#testimony-update-modal"><i class="bi bi-pencil-square"></i></a>
                 <form action="{{route('testimony.delete', ['id' => $testimony->id])}}" method="POST">
@@ -18,7 +18,7 @@
                     </button>
                 </form>
             </div>
-        @elseif (Auth::user()->role === 'admin')
+        @elseif (Auth::check() && Auth::user()->role === 'admin')
             <form action="{{route('testimony.delete', ['id' => $testimony->id])}}" method="POST">
                 @csrf
                 @method('DELETE')

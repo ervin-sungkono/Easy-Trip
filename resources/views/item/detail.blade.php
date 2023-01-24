@@ -194,40 +194,38 @@
                 @endauth
             </div>
         </div>
-        @auth
-            <div class="row">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="display-6 playfair fw-bold mb-3">Reviews</div>
-                    @if(Auth::user()->role === 'member')
-                        <button class="btn btn-primary text-white fw-semibold" data-bs-toggle="modal" data-bs-target="#testimony-modal">
-                            <span>Add Review</span>
-                            <i class="bi bi-plus-lg"></i>
-                        </button>
-                    @endif
-                </div>
-                <div class="d-flex flex-row flex-nowrap gap-3 py-3" style="overflow-x: scroll">
-                    @if($item->testimonies->count() > 0)
-                        @foreach ($item->testimonies as $testimony)
-                            @include('components.testimony-card', array(
-                                'testimony' => $testimony,
-                                'user' => $testimony->user
-                            ))
-                        @endforeach
-                    @elseif(Auth::user()->role === 'member')
-                        <div class="card" style="width: 16rem; min-width: 16rem;">
-                            <div class="card-body">
-                                <h4 class="card-title text-muted fw-bold">Belum ada review</h4>
-                                <p class="card-text text-muted">jadilah yang pertama untuk membuat review!</p>
-                                <button class="btn btn-primary text-white fw-semibold" data-bs-toggle="modal" data-bs-target="#testimony-modal">
-                                    <span>Add Review</span>
-                                    <i class="bi bi-plus-lg"></i>
-                                </button>
-                            </div>
-                        </div>
-                    @endif
-                </div>
+        <div class="row">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="display-6 playfair fw-bold mb-3">Reviews</div>
+                @if(Auth::check() && Auth::user()->role === 'member')
+                    <button class="btn btn-primary text-white fw-semibold" data-bs-toggle="modal" data-bs-target="#testimony-modal">
+                        <span>Add Review</span>
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                @endif
             </div>
-        @endauth
+            <div class="d-flex flex-row flex-nowrap gap-3 py-3" style="overflow-x: scroll">
+                @if($item->testimonies->count() > 0)
+                    @foreach ($item->testimonies as $testimony)
+                        @include('components.testimony-card', array(
+                            'testimony' => $testimony,
+                            'user' => $testimony->user
+                        ))
+                    @endforeach
+                @elseif(Auth::check() && Auth::user()->role === 'member')
+                    <div class="card" style="width: 16rem; min-width: 16rem;">
+                        <div class="card-body">
+                            <h4 class="card-title text-muted fw-bold">Belum ada review</h4>
+                            <p class="card-text text-muted">jadilah yang pertama untuk membuat review!</p>
+                            <button class="btn btn-primary text-white fw-semibold" data-bs-toggle="modal" data-bs-target="#testimony-modal">
+                                <span>Add Review</span>
+                                <i class="bi bi-plus-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </div>
     </div>
 @endsection
 
