@@ -13,7 +13,7 @@
             </div>
             <div class="d-flex gap-2">
                 <i class="bi bi-star-fill text-warning"></i>
-                <p>{{$item->rating > 0 ? number_format($item->rating,2)."/5.00" : "No Ratings"}}</p>
+                <p>{{$item->avg_rating > 0 ? number_format($item->avg_rating,2)."/5.00" : "No Ratings"}}</p>
             </div>
         </div>
 
