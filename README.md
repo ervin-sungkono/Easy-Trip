@@ -7,18 +7,14 @@ Deskripsi: EasyTrip merupakan sebuah aplikasi untuk memesan tiket tempat wisata 
 - Buka dan jalankan XAMPP, kemudian buat database baru agar bisa disambungkan dengan projek
 
 ## Installation Guide
-1. Buat folder baru
-
-2. Clone project dari repository Github dibawah ini di dalam folder tersebut dengan menggunakan Command Line Interface (CLI)
+Clone project dari repository Github dibawah ini di dalam folder tersebut dengan menggunakan Command Line Interface (CLI)
 ```sh
 git clone https://github.com/ervin-sungkono/Easy-Trip
 ```
 ## Setup Guide
 1. Buka projek laravel yang sudah di clone pada Visual Studio Code
-
-> *Semua step dibawah ini dilakukan dalam terminal*
-
-
+   > *Semua step dibawah ini dilakukan dalam terminal*
+   
 2. Setup Laravel & install npm dependencies
 ```sh
 composer install
