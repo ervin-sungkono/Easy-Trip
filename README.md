@@ -2,12 +2,13 @@
 Deskripsi: EasyTrip merupakan sebuah aplikasi untuk memesan tiket tempat wisata yang ada di Indonesia. 
 
 ## Requirement untuk menjalankan projek ini:
-- Download XAMPP di https://www.apachefriends.org/download.html
-- Download Composer dengan https://getcomposer.org/Composer-Setup.exe   
+- Download PHP versi 7.3 atau keatas [disini](https://www.php.net/downloads.php)
+- Download XAMPP [disini](https://www.apachefriends.org/download.html)
+- Download Composer [disini](https://getcomposer.org/Composer-Setup.exe)   
 - Buka dan jalankan XAMPP, kemudian buat database baru agar bisa disambungkan dengan projek
 
 ## Installation Guide
-Clone project dari repository Github dibawah ini di dalam folder tersebut dengan menggunakan Command Line Interface (CLI)
+Clone project dari repository Github dengan command dibawah
 ```sh
 git clone https://github.com/ervin-sungkono/Easy-Trip
 ```
