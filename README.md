@@ -59,3 +59,9 @@ php artisan migrate:fresh --seed
 ```sh
 php artisan serve
 ```
+
+## Library/Package yang digunakan projek ini
+- [CKEditor4](https://ckeditor.com/ckeditor-4/download/) untuk membuat editor teks
+- [DOMPDF](https://github.com/barryvdh/laravel-dompdf) untuk menghasilkan file pdf
+- [Bootstrap](https://github.com/twbs/bootstrap) untuk membuat website menjadi rapi
+- [Bootstrap Icons](https://github.com/twbs/icons) untuk memunculkan icon pada website
