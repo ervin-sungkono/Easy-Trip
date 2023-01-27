@@ -22,12 +22,7 @@ composer install
 npm install
 ```
 
-3. Link ke storage laravel untuk cek upload image
-```sh
-php artisan storage:link
-```
-
-4. Copy .env.example file 
+3. Copy .env.example file 
 ```sh
 cp .env.example .env
 ```
@@ -42,14 +37,19 @@ Kemudian tambahkan credentials dibawah ini pada file .env tersebut
 
 Untuk mendapatkan Google Client ID dan Google Client Secret melalui https://console.cloud.google.com
 
-5. Generate application key
+4. Generate application key
  ```sh
 php artisan key:generate
 ```
 
-6. Migrate Database dan Seeder
+5. Migrate Database dan Seeder
  ```sh
 php artisan migrate:fresh --seed
+```
+
+6. Link ke storage laravel untuk cek upload image
+```sh
+php artisan storage:link
 ```
 
 7. Run app
