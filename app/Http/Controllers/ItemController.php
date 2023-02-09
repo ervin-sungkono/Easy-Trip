@@ -39,7 +39,7 @@ class ItemController extends Controller
 
         $file = $request->file('image');
         $name = $file->getClientOriginalName();
-        $filename = str_replace(" ", "", $name).'_'.now()->timestamp;
+        $filename = now()->timestamp.'_'.str_replace(" ", "", $name);
 
         $checked = $request->has('status') ? true : false;
 
@@ -70,7 +70,7 @@ class ItemController extends Controller
 
             $file = $request->file('image');
             $name = $file->getClientOriginalName();
-            $filename = str_replace(" ", "", $name).'_'.now()->timestamp;
+            $filename = now()->timestamp.'_'.str_replace(" ", "", $name);
 
             $imageUrl = $storage->putFileAs('images', $file, $filename);
 
